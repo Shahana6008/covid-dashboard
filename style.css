@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap');
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+#mapid { 
+    width:100%;
+    height:100%;
+
+} 
+.custom-popup .leaflet-popup-content-wrapper {
+    background:#2c3e50;
+    color:#fff;
+    font-size:16px;
+    line-height:24px;
+    }
+  .custom-popup .leaflet-popup-content-wrapper a {
+    color:rgba(255,255,255,0.5);
+    }
+  .custom-popup .leaflet-popup-tip-container {
+    width:30px;
+    height:15px;
+    }
+  .custom-popup .leaflet-popup-tip {
+    background: #2c3e50;
+    }
+  
+
+    .total-stats {
+        z-index: 1000;
+        background: rgba(0, 0, 0, 0.8);
+        /* height: 200px; */
+        line-height: 1.5rem;
+        font-size: 14px;
+        width: 250px;
+        position: absolute;
+        bottom: 2rem;
+        left: 1rem;
+        padding: 1rem;
+        border-radius: 5px;
+        color: white;
+        /* box-shadow: 0 0 9px #ccc; */
+    }
