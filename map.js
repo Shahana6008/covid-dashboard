@@ -1,20 +1,4 @@
 
-bounds = L.latLngBounds([-90,-180],   [90,180]);
-
-var mymap = L.map('mapid', {
-    maxBounds: bounds,
-}).setView([12, 70], 2.5);
-
-L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-    maxZoom: 8,
-    minZoom: 2.5,
-    id: 'mapbox/streets-v11',
-    tileSize: 512,
-    noWrap:true,
-    zoomOffset: -1,
-    accessToken: 'pk.eyJ1Ijoic2hhaGFuYS0xNzE4IiwiYSI6ImNrbjJ2MXR3YjFiZWEyb25uNnVscmRtMWYifQ.klNlQ-JBR58R3btiTr8a7w'
-}).addTo(mymap);
-
 
 axios.get('https://api.covid19api.com/summary', {
     headers: {
@@ -31,9 +15,25 @@ axios.get('https://api.covid19api.com/summary', {
             .then(function (response2) {
                 const latLongData = response2.data.ref_country_codes;
 
+                bounds = L.latLngBounds([-90,-180],   [90,180]);
 
-                console.log(covidData);
-                console.log(latLongData);
+                var mymap = L.map('mapid', {
+                    maxBounds: bounds,
+                }).setView([12, 70], 2.5);
+
+
+                L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+                    maxZoom: 8,
+                    minZoom: 2.5,
+                    id: 'mapbox/streets-v11',
+                    tileSize: 512,
+                    noWrap:true,
+                    zoomOffset: -1,
+                    accessToken: 'pk.eyJ1Ijoic2hhaGFuYS0xNzE4IiwiYSI6ImNrbjJ2MXR3YjFiZWEyb25uNnVscmRtMWYifQ.klNlQ-JBR58R3btiTr8a7w'
+                }).addTo(mymap);
+
+                // console.log(covidData);
+                // console.log(latLongData);
 
 
                 for (var i of covidData) {
@@ -61,7 +61,6 @@ axios.get('https://api.covid19api.com/summary', {
                 totalStatsDiv.innerHTML = `New Confirmed Cases: ${G.NewConfirmed} <br> Total Confirmed: ${G.TotalConfirmed} <br> New Deaths:: ${G.NewDeaths} <br> Total Deaths: ${G.TotalDeaths} <br> New Recovered: ${G.NewRecovered}  `;
 
                 document.body.appendChild(totalStatsDiv);
-
 
             })
             .catch(function (error) {
